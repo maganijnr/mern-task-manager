@@ -3,13 +3,18 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/connectDB");
 const taskRoutes = require("./routes/taskRoutes");
 const app = express();
+const cors = require("cors");
 
 dotenv.config();
 
 //Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 
+// {
+// 		origin: ["http://localhost:3000/"],
+// 	}
 //Routes
 app.use("/api/tasks", taskRoutes);
 
